@@ -6,6 +6,8 @@ aseguramos de que haya cargado antes de ejecutar el código
 // Link agua: https://reinspirit.com/8-recursos-css-y-js-para-incluir-un-efecto-liquido-en-la-web/
 // link luces: https://www.treeweb.es/TreeWeb/Articulos/HTML-y-CSS/Efecto-linterna
 // link transporte: https://es.pinterest.com/pin/9499849194558565/
+// link segundaVida: https://ar.pinterest.com/pin/242983342383827369/   o   https://ar.pinterest.com/pin/480829697733767367/
+// link basura: https://www.youtube.com/watch?v=MkbrESdbNpY
 
 document.addEventListener("DOMContentLoaded", function () {
     // Lista de preguntas
@@ -18,17 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             texto: "¿Cierras el grifo mientras te lavas los dientes?",
             opciones: { "Sí": 100, "No": 0 },
-            id: "grifo"
+            id: "agua"
         },
         {
             texto: "¿Cuánto tiempo tardas en la ducha?",
             opciones: { "Menos de 5 minutos": 100, "Entre 5 y 10 minutos": 50, "Más de 10 minutos": 0 },
-            id: "ducha"
+            id: "agua"
         },
         {
             texto: "¿Separas la basura en casa?",
             opciones: { "Sí": 100, "No": 0 },
-            id: "reciclaje"
+            id: "basura"
         },
         {
             texto: "¿Qué transporte usas más para ir al colegio?",
@@ -38,42 +40,42 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             texto: "¿Reutilizas las hojas de papel cuando quedan en blanco por un lado?",
             opciones: { "Siempre": 100, "A veces": 50, "Nunca": 0 },
-            id: "papel"
+            id: "segundaVida"
         },
         {
             texto: "¿Qué haces con los restos de comida que sobran en casa?",
             opciones: { "Los guardo para comer más tarde": 100, "Los tiro a la basura": 0 },
-            id: "sobras"
+            id: "segundaVida"
         },
         {
             texto: "¿Sabes qué va en cada contenedor de reciclaje (plásticos, papel, vidrio, etc.)?",
             opciones: { "Sí": 100, "Más o menos": 50, "No": 0 },
-            id: "contenedor"
+            id: "basura"
         },
         {
             texto: "¿Qué haces con tus juguetes rotos o que ya no usas?",
             opciones: { "Los arreglo o regalo": 100, "Los guardo sin usarlos": 50, "Los tiro a la basura": 0 },
-            id: "juguetes"
+            id: "segundaVida"
         },
         {
             texto: "¿Llevas tu desayuno o almuerzo en recipientes reutilizables o en bolsas de plástico?",
             opciones: { "Reutilizables": 100, "Bolsas de plástico": 0 },
-            id: "almuerzo"
+            id: "segundaVida"
         },
         {
             texto: "Cuando juegas en el parque o en la playa, ¿recoges tu basura antes de irte?",
             opciones: { "Siempre": 100, "A veces": 50, "Nunca": 0 },
-            id: "parque"
+            id: "basura"
         },
         {
             texto: "¿Qué haces con las botellas de agua que usas en el colegio?",
             opciones: { "Las llevo a casa para reutilizarlas": 100, "Las tiro en la basura de reciclaje": 50, "Las dejo en el colegio": 0 },
-            id: "botellas"
+            id: "segundaVida"
         },
         {
             texto: "Si ves un papel en el suelo de la escuela o parque, ¿qué haces?",
             opciones: { "Lo recojo y tiro a la basura": 100, "No hago nada": 0 },
-            id: "papelSuelo"
+            id: "basura"
         },
         {
             texto: "Cuando usas agua para jugar o lavar cosas, ¿la dejas correr todo el tiempo?",
@@ -83,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             texto: "¿Cuántas veces reutilizas una botella de plástico antes de desecharla?",
             opciones: { "Muchas veces": 100, "Una o dos veces": 50, "Ninguna": 0 },
-            id: "botellaReutilizar"
+            id: "agua"
         }
     ];
 
