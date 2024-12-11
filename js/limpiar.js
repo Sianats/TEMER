@@ -1,13 +1,14 @@
 let canvas = document.getElementById("scratch");
+let container = document.querySelector(".question-container");
 let context = canvas.getContext("2d");
 let isRevealed = false; // Bandera para verificar si ya se reveló la pregunta
 
 const init = () => {
-  let gradientColor = context.createLinearGradient(0, 0, 135, 135);
-  gradientColor.addColorStop(0, "#87F4B5");
-  gradientColor.addColorStop(1, "#93CBF1");
-  context.fillStyle = gradientColor;
-  context.fillRect(0, 0, canvas.width, canvas.height);
+    const image = new Image();
+    image.src = "../imagenes/suciedad.jpg"; // Ruta de la imagen
+    image.onload = () => {
+      context.drawImage(image, 0, 0, container.clientWidth, container.clientHeight);
+    };
 };
 
 //initially mouse X and mouse Y positions are 0
@@ -84,6 +85,7 @@ canvas.addEventListener(events[deviceType].up, () => {
   isDragged = false;
   checkReveal(); // Verificar si se ha revelado suficiente área
 });
+
 
 //If mouse leaves the square
 canvas.addEventListener("mouseleave", () => {
