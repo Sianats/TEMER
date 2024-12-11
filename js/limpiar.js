@@ -3,11 +3,16 @@ let container = document.querySelector(".question-container");
 let context = canvas.getContext("2d");
 let isRevealed = false; // Bandera para verificar si ya se reveló la pregunta
 
+const containerWidth = container.clientWidth;
+const containerHeight = container.clientHeight;
+canvas.width = containerWidth;
+canvas.height = containerHeight;
+
 const init = () => {
     const image = new Image();
     image.src = "../imagenes/suciedad.jpg"; // Ruta de la imagen
     image.onload = () => {
-      context.drawImage(image, 0, 0, container.clientWidth, container.clientHeight);
+      context.drawImage(image, 0, 0, 600, 600);
     };
 };
 
@@ -114,7 +119,7 @@ const checkReveal = () => {
     const totalPixels = canvas.width * canvas.height;
     const clearedPercentage = (clearedPixels / totalPixels) * 100;
     // Si se ha revelado más del 50%, deshabilitar el canvas
-    if (clearedPercentage > 60) {
+    if (clearedPercentage > 50) {
       isRevealed = true;
       disableScratch();
     }

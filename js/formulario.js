@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             texto: "¿Separas la basura en casa?",
-            opciones: { "Sí": 100, "No": 0 },
+            opciones: { "Sí": 100, "Depende del tipo de basura": 50, "No": 0, "No estoy seguro": 0 },
             id: "basura"
         },
         {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             texto: "¿Sabes qué va en cada contenedor de reciclaje (plásticos, papel, vidrio, etc.)?",
             opciones: { "Sí": 100, "Más o menos": 50, "No": 0 },
-            id: "basura"
+            id: "basura" 
         },
         {
             texto: "¿Qué haces con tus juguetes rotos o que ya no usas?",
@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
             id: "segundaVida"
         },
         {
-            texto: "Si ves un papel en el suelo de la escuela o parque, ¿qué haces?",
-            opciones: { "Lo recojo y tiro a la basura": 100, "No hago nada": 0 },
+            texto: "Si ves un papel en el suelo de la escuela, en la calle o en el parque, ¿qué haces?",
+            opciones: { "Lo recojo y tiro a la basura": 100, "No me ha pasado nunca": 0, "No hago nada": 0 },
             id: "basura"
         },
         {
