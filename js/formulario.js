@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Seleccionar aleatoriamente 4 preguntas
     const preguntasSeleccionadas = [];
-    while (preguntasSeleccionadas.length < 4) {
+    while (preguntasSeleccionadas.length < 6) {
         const randomIndex = Math.floor(Math.random() * preguntas.length);
         if (!preguntasSeleccionadas.includes(preguntas[randomIndex])) {
             preguntasSeleccionadas.push(preguntas[randomIndex]);
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         preguntaDiv.innerHTML = `
             <label>${pregunta.texto}</label>
             ${Object.keys(pregunta.opciones).map(opcion => `
-                <input type="radio" name="${pregunta.id}" value="${pregunta.opciones[opcion]}" ${respuestas[pregunta.id] === `${pregunta.opciones[opcion]}` ? "checked" : ""}> ${opcion}
+                <input type="radio" name="${pregunta.id}" value="${pregunta.opciones[opcion]}"> ${opcion}
             `).join("<br>")}
         `;
 
@@ -127,10 +127,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("next").addEventListener("click", function() {
+
+        if (!validarRespuesta()) {
+            alert("¡Alto ahí! No puedes calcular tu sostenibilidad sin responder todas. ¡¡Eso es trampa!!");
+            return;
+        }
+
         guardarRespuesta();
         preguntaActual++;
         mostrarPregunta();
     });
+
+    // Validar si se seleccionó una respuesta
+    function validarRespuesta() {
+        const pregunta = preguntasSeleccionadas[preguntaActual];
+        return document.querySelector(`input[name="${pregunta.id}"]:checked`) !== null;
+    }
 
     // Guardar respuesta seleccionada
     function guardarRespuesta() {
@@ -153,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
             respondidas++;
         }
 
-        const media = total / respondidas;
+        const media = Math.trunc(total / respondidas);
         const resultadoDiv = document.getElementById("resultado");
         resultadoDiv.innerHTML = `<p>¡Tu puntuación de sostenibilidad es <span>${media}%</span>!</p>`;
     });
