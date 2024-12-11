@@ -12,8 +12,10 @@ const init = () => {
     const image = new Image();
     image.src = "../imagenes/suciedad.jpg"; // Ruta de la imagen
     image.onload = () => {
-      context.drawImage(image, 0, 0, 600, 600);
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
     };
+    isRevealed = false;  //Reiniciar estado
+    //canvas.style.pointerEvents = "auto";  Habilitar interacciones
 };
 
 //initially mouse X and mouse Y positions are 0
