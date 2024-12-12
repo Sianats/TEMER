@@ -1,5 +1,5 @@
 let canvas = document.getElementById("scratch");
-let container = document.querySelector(".question-container");
+let container = document.querySelector(".questioncontainer");
 let context = canvas.getContext("2d");
 let isRevealed = false; // Bandera para verificar si ya se reveló la pregunta
 
@@ -143,7 +143,7 @@ const checkReveal = () => {
 const disableScratch = () => {
     canvas.style.pointerEvents = "none";
     context.clearRect(0, 0, canvas.width, canvas.height);
-    document.querySelector(".question-container").style.display = "block";
+    document.querySelector(".questioncontainer").style.display = "block";
 };
 
 // Inicializar cuando se cargue

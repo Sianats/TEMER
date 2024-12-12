@@ -111,13 +111,14 @@ function mostrarPregunta() {
     const canvas = document.getElementById("scratch");
     if (pregunta.id === "basura") {
         canvas.style.display = "block"; // Mostrar canvas
-        
+        document.querySelector(".questioncontainer").style.width = "500px";
+        document.querySelector(".questioncontainer").style.height = "250px";
         init(); // Inicializar el efecto de rasca y gana
         //Llega a entrar en el bucle aunque no sea la primera pregunta e incluso carga la imagen pero creo que solo permite cargar la imagen 1 vez por form
     } else {
         canvas.style.display = "none"; // Ocultar canvas
         // Mostrar la pregunta inmediatamente si no es de tipo "basura"
-        document.querySelector(".question-container").style.display = "block";
+        document.querySelector(".questioncontainer").style.display = "block";
     }
 
     preguntaDiv.innerHTML = `
