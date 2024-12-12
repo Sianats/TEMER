@@ -7,7 +7,6 @@ aseguramos de que haya cargado antes de ejecutar el código
 // link luces: https://www.treeweb.es/TreeWeb/Articulos/HTML-y-CSS/Efecto-linterna
 // link transporte: https://es.pinterest.com/pin/9499849194558565/
 // link segundaVida: https://ar.pinterest.com/pin/242983342383827369/   o   https://ar.pinterest.com/pin/480829697733767367/
-// link basura: https://www.youtube.com/watch?v=MkbrESdbNpY
 
 document.addEventListener("DOMContentLoaded", function () {
     // Lista de preguntas
