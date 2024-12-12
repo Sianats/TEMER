@@ -102,22 +102,44 @@ document.addEventListener("DOMContentLoaded", function () {
     let preguntaActual = 0;
     const respuestas = {};
 
-    // Renderizar pregunta
-    function mostrarPregunta() {
-        const pregunta = preguntasSeleccionadas[preguntaActual];
-        const preguntaDiv = document.getElementById("pregunta");
-        preguntaDiv.innerHTML = `
-            <label>${pregunta.texto}</label>
-            ${Object.keys(pregunta.opciones).map(opcion => `
-                <input type="radio" name="${pregunta.id}" value="${pregunta.opciones[opcion]}"> ${opcion}
-            `).join("<br>")}
-        `;
+// Renderizar pregunta
+function mostrarPregunta() {
+    const pregunta = preguntasSeleccionadas[preguntaActual];
+    const preguntaDiv = document.getElementById("pregunta");
 
-        // Mostrar/Ocultar botones
-        document.getElementById("prev").style.display = preguntaActual === 0 ? "none" : "inline-block";
-        document.getElementById("next").style.display = preguntaActual === preguntasSeleccionadas.length - 1 ? "none" : "inline-block";
-        document.getElementById("submit").style.display = preguntaActual === preguntasSeleccionadas.length - 1 ? "inline-block" : "none";
+    // Mostrar u ocultar el canvas dependiendo del ID
+    const canvas = document.getElementById("scratch");
+    if (pregunta.id === "basura") {
+        canvas.style.display = "block"; // Mostrar canvas
+        
+        init(); // Inicializar el efecto de rasca y gana
+        //Llega a entrar en el bucle aunque no sea la primera pregunta e incluso carga la imagen pero creo que solo permite cargar la imagen 1 vez por form
+    } else {
+        canvas.style.display = "none"; // Ocultar canvas
+        // Mostrar la pregunta inmediatamente si no es de tipo "basura"
+        document.querySelector(".question-container").style.display = "block";
     }
+
+    preguntaDiv.innerHTML = `
+        <label>${pregunta.texto}</label>
+        ${Object.keys(pregunta.opciones)
+            .map(
+                (opcion) =>
+                    `<input type="radio" name="${pregunta.id}" value="${pregunta.opciones[opcion]}"> ${opcion}`
+            )
+            .join("<br>")}
+    `;
+
+    // Mostrar/Ocultar botones
+    document.getElementById("prev").style.display = preguntaActual === 0 ? "none" : "inline-block";
+    document.getElementById("next").style.display =
+        preguntaActual === preguntasSeleccionadas.length - 1 ? "none" : "inline-block";
+    document.getElementById("submit").style.display =
+        preguntaActual === preguntasSeleccionadas.length - 1 ? "inline-block" : "none";
+}
+
+    // Inicializar formulario
+    mostrarPregunta();
 
     // Navegación entre preguntas
     document.getElementById("prev").addEventListener("click", function() {
@@ -170,42 +192,5 @@ document.addEventListener("DOMContentLoaded", function () {
         resultadoDiv.innerHTML = `<p>¡Tu puntuación de sostenibilidad es <span>${media}%</span>!</p>`;
     });
 
-// Renderizar pregunta
-function mostrarPregunta() {
-    const pregunta = preguntasSeleccionadas[preguntaActual];
-    const preguntaDiv = document.getElementById("pregunta");
 
-    // Mostrar u ocultar el canvas dependiendo del ID
-    const canvas = document.getElementById("scratch");
-    if (pregunta.id === "basura") {
-        canvas.style.display = "block"; // Mostrar canvas
-        init(); // Inicializar el efecto de rasca y gana
-        print("basura")
-        //Llega a entrar en el bucle aunque no sea la primera pregunta e incluso carga la imagen pero creo que solo permite cargar la imagen 1 vez por form
-    } else {
-        canvas.style.display = "none"; // Ocultar canvas
-        // Mostrar la pregunta inmediatamente si no es de tipo "basura"
-        document.querySelector(".question-container").style.display = "block";
-    }
-
-    preguntaDiv.innerHTML = `
-        <label>${pregunta.texto}</label>
-        ${Object.keys(pregunta.opciones)
-            .map(
-                (opcion) =>
-                    `<input type="radio" name="${pregunta.id}" value="${pregunta.opciones[opcion]}"> ${opcion}`
-            )
-            .join("<br>")}
-    `;
-
-    // Mostrar/Ocultar botones
-    document.getElementById("prev").style.display = preguntaActual === 0 ? "none" : "inline-block";
-    document.getElementById("next").style.display =
-        preguntaActual === preguntasSeleccionadas.length - 1 ? "none" : "inline-block";
-    document.getElementById("submit").style.display =
-        preguntaActual === preguntasSeleccionadas.length - 1 ? "inline-block" : "none";
-}
-
-    // Inicializar formulario
-    mostrarPregunta();
 });
