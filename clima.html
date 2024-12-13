@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperatura del Agua y Calidad del Aire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilosA.css">
+  <script type="text/javascript" charset="utf-8" src="https://feed.aqicn.org/feed.js"></script>
+  <script defer src="tempMar_CalAire.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🌍 Temperatura y Calidad Ambiental</h1>
+    <p><i>Datos actualizados desde la API de AEMET y WAQI</i></p>
+  </header>
+
+    <!-- Codifique aquí la barra de navegación -->
+  <nav>
+    <button onclick="location.href='inicio.html'">Volver a la página principal</button>
+  </nav>
+
+  <main>
+    <h2>¿Por qué es importante la temperatura del agua del mar?</h2>
+    <section class="informacion-mar">
+      <div class="info-imagen">
+        <p>El agua del mar puede calentarse o enfriarse dependiendo del clima. Pero ahora, con el Cambio Climático, el agua está volviéndose más caliente de lo normal. Los científicos usan imágenes de satélite para ver estos cambios todos los días. Esto les ayuda a cuidar a los animales y entender cómo el calor afecta al clima de todo el planeta. A continuación, podemos ver la temperatura del mar desde los datos de la AEMET que se actualizan todos los dias. </p>
+        <div class="imagen-satelite">
+          <img id="imagen-satelite" src="imagenes/temperatura_satelite.png" alt="Imagen de temperatura del agua actualizada diariamente">
+        </div>
+      </div>
+    
+      <div class="info-texto">
+        <h3>¿Qué pasa cuando el mar se calienta demasiado?</h3>
+        <ul>
+          <li><strong>Los corales se enferman:</strong> Los corales son como las casitas de muchos peces y animales marinos. Si el agua está muy caliente, los corales pierden su color y se ponen blancos. ¡Esto hace que los animales pierdan su hogar!</li>
+          <li><strong>Los animales buscan otro lugar para vivir:</strong> Algunos peces y animales no pueden vivir en agua caliente, así que nadan hacia lugares más fríos. Esto puede cambiar todo en los océanos.</li>
+          <li><strong>Sube el nivel del mar:</strong> Cuando el agua del mar se calienta, los glaciares y el hielo de los polos se derriten. Esto hace que el agua crezca y suba el nivel del mar, lo que puede causar inundaciones y tormentas más fuertes.</li>
+        </ul>
+      </div>
+    
+      <div class="imagenes-mar">
+        <h3>¿Cómo podemos ayudar?</h3>
+        <p>Si cuidamos la Tierra, usamos menos plásticos y ahorramos energía, podemos ayudar a que los océanos estén más frescos y saludables para todos los animales y personas.</p>
+        <div class="imagenes-contenedor">
+          <img src="imagenes/coral_cont_01.png" alt="Blanqueamiento de corales" class="imagen-mar">
+          <img src="imagenes/coral_cont_02.png" alt="Especies desplazándose por el calor" class="imagen-mar">
+          <img src="imagenes/coral_cont_03.png" alt="Efectos del nivel del mar" class="imagen-mar">
+        </div>
+      </div>
+    </section>
+
+      <!-- Sección del mapa -->
+    <h2>¡Descubre cómo respira Valencia!</h2>
+    <section class="informacion-mar">
+      <div class="info-imagen">
+        <p>¿Sabías que el aire que respiramos tiene niveles de salud? Aquí tienes un mapa que te dice cómo está el aire en Valencia. Usamos algo llamado <strong>Índice de Calidad del Aire</strong> (AQI)</p>
+      <!-- Contenedor del mapa -->
+      <div id="map"></div>
+      <div class="info-texto">
+        <ul>
+          <p>Los distinos niveles se miden de la siguiente manera: </p>
+          <li><strong>0-50:</strong> ¡Genial! El aire está súper limpio, perfecto para jugar fuera.</li>
+          <li><strong>51-100:</strong> Está bien, pero si tienes alergias, ve con cuidado.</li>
+          <li><strong>101-150:</strong> ¡Ups! No es muy bueno para personas con asma o problemas de salud. Mejor no correr mucho.</li>
+          <li><strong>151-200:</strong> El aire está feo para todos. Tal vez sea un buen día para jugar en casa.</li>
+          <li><strong>201-300:</strong> ¡Ay, qué mal! Mejor no salgas, el aire no está nada sano.</li>
+          <li><strong>300+:</strong> ¡Cuidado! El aire es peligroso, es hora de quedarse seguro adentro.</li>
+        </ul>
+      </div>
+      <div class="gif-calidad-aire">
+        <img src="imagenes/contaminacion-mal.gif" alt="Un GIF que muestra contaminación">
+      </div>
+    </section>
+
+    <script>
+      // Configuración del mapa
+      const OSM_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      const OSM_ATTRIB = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+      const osmLayer = L.tileLayer(OSM_URL, { attribution: OSM_ATTRIB });
+
+      const WAQI_URL = "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";
+      const WAQI_ATTR = 'Air Quality Tiles &copy; <a href="http://waqi.info">waqi.info</a>';
+      const waqiLayer = L.tileLayer(WAQI_URL, { attribution: WAQI_ATTR });
+
+      // Inicialización del mapa centrado en Valencia
+      const map = L.map('map').setView([39.4699, -0.3763], 12); // Coordenadas y nivel de zoom
+      map.addLayer(osmLayer).addLayer(waqiLayer);
+    </script>
+  </main>
+
+  <footer>&copy; 2024 EcoExploradores. Todos los derechos reservados.</footer>
+</body>
+</html>

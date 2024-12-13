@@ -1,0 +1,123 @@
+body{
+    font-family: Arial, sans-serif;
+}
+/*Estilos para la cabacera*/
+header{
+    /*Estilos*/
+    background-image: url("../imagenes/fondo2.jpeg");
+    background-size: cover;
+    background-position:unset;
+    height: 200px;
+    display:flex;   /*contenedor flexible: permite alinear y distribuir los elementos hijos.*/
+    flex-direction: column;  /* Organiza elementos en una columna vertical*/
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: lightgreen;
+    font-size: calc(2.5*font-size);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+header p{
+    color: rgb(4, 58, 7);
+    font-size: calc(1.5*font-size);
+    margin: 5px 0 0;
+}
+
+/*Estilo para la barra de navegación*/
+nav{
+    background-color: rgb(199, 230, 199);
+    text-align: left;
+    vertical-align: 5px;
+    padding: 10px;
+    position:absolute;
+    top: 208px;
+    width: 200px; /* Ancho de la barra vertical */
+    float: left; /* Posiciona la barra a la izquierda */
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
+}
+nav button {
+    background-color: #ccc;
+    color: black;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    display: block; /* Apila los botones verticalmente */
+    text-align: left; 
+}
+/* Estilo para el botón seleccionado (página actual) */
+nav button.active {
+    background-color: #4CAF50;
+    color: white;
+    cursor: default; /* No muestra el puntero de clic */
+    pointer-events: none; /* Deshabilita interacciones */
+}
+nav button.active:hover,
+nav button.active:focus {
+    background-color: #4CAF50; /* Mantiene el verde */
+}
+
+/* Estilo al pasar el mouse */
+nav button:hover {
+    background-color: #bbb;
+}
+/* Estilo cuando un botón tiene el foco o es seleccionado */
+nav button:focus {
+    background-color: #aaa;
+}
+
+/*Estilo para la página principal*/
+.intro {
+    text-align:center;
+    color: black;
+    margin-top: 50px;
+}
+.motivaciones {
+    background-color: lightgrey;
+    width: 450px;
+    border: 15px solid  #45a049;
+    padding: 15px;
+    margin: 20px auto;
+  }
+.intro img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.contaminacion {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.contaminacion h3{
+    color: black;
+    font-variant: small-caps;
+    border: medium solid rgb(114, 247, 134);
+    border-radius: 5px;
+    background-color: rgb(193, 247, 174);
+    padding: 10px;
+    box-sizing: border-box;
+}
+.contaminacion iframe{
+    display: block;
+    width: 100%;  /* Ocupa todo el ancho disponible */
+    height: 600px;  /* Ajusta la altura según lo necesites */
+    margin: 10px 0;  /* Espaciado arriba y abajo y nada en laterales */
+    border: none;  /* Elimina bordes */
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+/*Estilo para el pie de página*/
+footer{
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
