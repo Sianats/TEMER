@@ -3,10 +3,11 @@ a los elementos del html cuando todavía no ha conseguido cargar y así nos
 aseguramos de que haya cargado antes de ejecutar el código
 */
 
-// Link agua: https://reinspirit.com/8-recursos-css-y-js-para-incluir-un-efecto-liquido-en-la-web/
+
 // link luces: https://www.treeweb.es/TreeWeb/Articulos/HTML-y-CSS/Efecto-linterna
 // link transporte: https://es.pinterest.com/pin/9499849194558565/
 // link segundaVida: https://ar.pinterest.com/pin/242983342383827369/   o   https://ar.pinterest.com/pin/480829697733767367/
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Lista de preguntas
@@ -110,14 +111,66 @@ function mostrarPregunta() {
     const canvas = document.getElementById("scratch");
     if (pregunta.id === "basura") {
         canvas.style.display = "block"; // Mostrar canvas
+        document.getElementById("agua").style.display = "none";
         document.querySelector(".questioncontainer").style.width = "500px";
         document.querySelector(".questioncontainer").style.height = "250px";
+        document.querySelector(".questioncontainer").style.background = "none";
         init(); // Inicializar el efecto de rasca y gana
-        //Llega a entrar en el bucle aunque no sea la primera pregunta e incluso carga la imagen pero creo que solo permite cargar la imagen 1 vez por form
-    } else {
+    } else if (pregunta.id === "agua") {
+        canvas.style.display = "none"; // Ocultar canvas
+        // Reemplazar el contenido del contenedor de la pregunta
+        document.getElementById("agua").style.display = "block";
+        document.querySelector(".questioncontainer").style.background = "#10a7c1";
+    } else if (pregunta.id === "segundaVida") {
+        document.getElementById("agua").style.display = "none";
         canvas.style.display = "none"; // Ocultar canvas
         // Mostrar la pregunta inmediatamente si no es de tipo "basura"
-        document.querySelector(".questioncontainer").style.display = "block";
+        document.querySelector(".questioncontainer").style.background = "url('../imagenes/reciclaje.gif')";
+        document.querySelector("#pregunta").style.maxWidth = "500px";
+        document.querySelector(".questioncontainer").style.backgroundPosition = "center"; 
+    } else if (pregunta.id === "transporte") { 
+        document.querySelector(".questioncontainer").style.width = "700px";
+        document.querySelector(".questioncontainer").style.height = "400px";
+        document.getElementById("agua").style.display = "none";
+        canvas.style.display = "none"; // Ocultar canvas
+        // Mostrar la pregunta inmediatamente si no es de tipo "basura"
+        document.querySelector(".questioncontainer").style.background = "url('../imagenes/bus.gif')";
+        document.querySelector(".questioncontainer").style.backgroundPosition = "center"; 
+        document.querySelector(".questioncontainer").style.backgroundSize = "cover"; 
+        document.querySelector(".questioncontainer").style.paddingTop = "120px";
+        document.querySelector(".questioncontainer").style.paddingLeft = "80px"; 
+        document.querySelector("#pregunta").style.maxWidth = "400px"; 
+        document.querySelector("#pregunta").style.backgroundColor= "rgba(255, 208, 0, 0.6)";
+    }else if(pregunta.id === "luces"){
+        window.addEventListener('load', function () {
+                // Si es el contenedor correcto, agrega la clase foco al elemento deseado
+                document.querySelector(".questioncontainer").id = 'foco';
+
+            const foco = document.getElementById('foco');
+            if (!foco) {
+                console.error('El elemento con ID "foco" no se encontró.');
+                return;
+            }
+        
+            foco.addEventListener('mousemove', function (event) {
+                const x = event.clientX - foco.offsetLeft; // Ajusta la posición X
+                const y = event.clientY - foco.offsetTop;  // Ajusta la posición Y
+        
+                // Actualiza la posición del fondo
+                foco.style.backgroundPosition = `${x - 2048}px ${y - 2048}px`;
+            });
+        
+            foco.addEventListener('click', function () {
+                // Ocultar el foco al hacer clic
+                this.style.display = 'none';
+            });
+        });
+        
+        
+        document.getElementById("agua").style.display = "none";
+        canvas.style.display = "none"; // Ocultar canvas
+        // Mostrar la pregunta inmediatamente si no es de tipo "basura"
+        
     }
 
     preguntaDiv.innerHTML = `

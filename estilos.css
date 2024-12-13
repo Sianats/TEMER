@@ -18,13 +18,17 @@
   .questioncontainer {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-  
+
+#agua {
+    pointer-events: none; /* Hace que el área no bloquee los clics de las opciones del form */
+}
+
+
   #scratch {
     cursor: url('imagenes/bayeta_red.png') 16 16, auto;
     -webkit-tap-highlight-color: transparent;
@@ -67,11 +71,11 @@ button#prev {
     color: #fff;
 }
 button#next {
-    background-color: #219ebc;
+    background-color: #06d37d;
     color: #fff;
 }
 button#submit {
-    background-color: #2a9d8f;
+    background-color: #06d37d;
     color: #fff;
     display: none;
 }
@@ -90,3 +94,75 @@ button#submit {
     padding: 10px;
     margin-top: 20px;
 }
+
+#foco {
+    z-index:9999999;
+    text-align:center;
+    font-size:50px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:url('imagenes/luz.png') center center no-repeat;
+}
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes drop {
+    0% {
+      bottom: 0px;
+      opacity: 1;
+    }
+    
+    80% {
+      opacity: 1;
+    }
+    
+    100% {
+      opacity: 1;
+      bottom: -200px;
+    }
+  }
+  
+  .drops {
+    -webkit-filter: url('#liquid');
+    filter: url('#liquid');
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    opacity: 0;
+    animation: fade-in .1s linear .4s forwards;
+  }
+  
+  .drop1 , .drop2 {
+    width: 21px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #10a7c1
+  }
+  
+  .drop1 {
+    width: auto;
+    height: 16px;
+    bottom: 2px;
+    border-radius: 0;
+  }
+  
+  .drop2 {
+    animation: drop 1.3s cubic-bezier(1,.19,.66,.12) .5s infinite;
+  }
